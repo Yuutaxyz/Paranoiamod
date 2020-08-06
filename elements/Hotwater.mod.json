@@ -1,0 +1,19 @@
+{
+  "_fv": 10,
+  "_type": "fluid",
+  "definition": {
+    "name": "Hotwater",
+    "textureStill": "thermalfontstill",
+    "textureFlowing": "thermalfontliquid",
+    "luminosity": 11,
+    "density": 1003,
+    "viscosity": 1000,
+    "isGas": false,
+    "type": "LAVA",
+    "generateBucket": true,
+    "creativeTab": {
+      "value": "MISC"
+    },
+    "spawnWorldTypes": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "blowflysound": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:ly_ound_ffect",
+        "stream": false
+      }
+    ]
+  },
+  "fogosound": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:ogo_fatuo_sound",
+        "stream": false
+      }
+    ]
+  },
+  "gralhacanto": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:ralhacanto",
+        "stream": false
+      }
+    ]
+  },
+  "ahangasoun": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:iado_som",
+        "stream": false
+      }
+    ]
+  },
+  "oncasom": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:oncapintadasom",
+        "stream": false
+      }
+    ]
+  },
+  "lobisomemsound": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "paranoiamod:werewolf_howl-soundbible.com-1888553688",
+        "stream": false
+      }
+    ]
+  }
+}

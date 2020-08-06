@@ -1,0 +1,338 @@
+{
+  "id_map": {
+    "ENTITY": 14
+  },
+  "mod_elements": [
+    {
+      "name": "MobsParanoia",
+      "type": "tab",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mobsparanoia"
+    },
+    {
+      "name": "Worm",
+      "type": "item",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "Nightfirepowder",
+      "type": "item",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "NightfireArmor",
+      "type": "armor",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "eh": true,
+        "el": true,
+        "eb": true,
+        "ec": true
+      }
+    },
+    {
+      "name": "NightfireArmorHelmetRecipe",
+      "type": "recipe",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "NightfireArmorBodyRecipe",
+      "type": "recipe",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "NightfireArmorLeggingsRecipe",
+      "type": "recipe",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "NightfireArmorBootsRecipe",
+      "type": "recipe",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "Plantacuradeira",
+      "type": "plant",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "plantacuradeira"
+    },
+    {
+      "name": "Cachorro",
+      "type": "mob",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "cachorro"
+    },
+    {
+      "name": "Panteraonca",
+      "type": "mob",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "panteraonca"
+    },
+    {
+      "name": "Brazilianlogo",
+      "type": "item",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "brazilianlogo"
+    },
+    {
+      "name": "LizardRubyOre",
+      "type": "block",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_ore"
+    },
+    {
+      "name": "LizardRubyOreBlock",
+      "type": "block",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_ore_block"
+    },
+    {
+      "name": "LizardRubyGem",
+      "type": "item",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_gem"
+    },
+    {
+      "name": "LizardRubyOreBlockRecipe",
+      "type": "recipe",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_ore_block_recipe"
+    },
+    {
+      "name": "LizardRubyBlockOreRecipe",
+      "type": "recipe",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_block_ore_recipe"
+    },
+    {
+      "name": "LizardRubyOreSmelting",
+      "type": "recipe",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "lizard_ruby_ore_smelting"
+    },
+    {
+      "name": "Hotwater",
+      "type": "fluid",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "hotwater"
+    },
+    {
+      "name": "Teinuagua",
+      "type": "mob",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "teinuagua"
+    },
+    {
+      "name": "Armadilo",
+      "type": "mob",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "armadilo"
+    },
+    {
+      "name": "Toucan",
+      "type": "mob",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "toucan"
+    },
+    {
+      "name": "GreenToucan",
+      "type": "mob",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "green_toucan"
+    },
+    {
+      "name": "NightFireBird",
+      "type": "mob",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "night_fire_bird"
+    },
+    {
+      "name": "Werewolf",
+      "type": "mob",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "werewolf"
+    },
+    {
+      "name": "Mysteriouslogo",
+      "type": "item",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysteriouslogo"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [
+    {
+      "name": "blowflysound",
+      "file": "ly_ound_ffect",
+      "category": "master"
+    },
+    {
+      "name": "fogosound",
+      "file": "ogo_fatuo_sound",
+      "category": "master"
+    },
+    {
+      "name": "gralhacanto",
+      "file": "ralhacanto",
+      "category": "master"
+    },
+    {
+      "name": "ahangasoun",
+      "file": "iado_som",
+      "category": "master"
+    },
+    {
+      "name": "oncasom",
+      "file": "oncapintadasom",
+      "category": "master"
+    },
+    {
+      "name": "lobisomemsound",
+      "file": "werewolf_howl-soundbible.com-1888553688",
+      "category": "master"
+    }
+  ],
+  "language_map": {
+    "en_us": {
+      "item.paranoiamod.nightfirearmorhelmet": "Nightfire Helmet",
+      "tile.plantacuradeira.name": "Aconitum Napellus",
+      "item.paranoiamod.nightfirearmor_leggings": "Nightfire Leggings",
+      "entity.paranoiamod.panteraonca": "Jaguar",
+      "entity.paranoiamod.armadilo": "Armadilo",
+      "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
+      "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
+      "item.paranoiamod.lizard_ruby_gem": "Ruby",
+      "item.nightfirearmorbody.name": "Nightfire Chestplate",
+      "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
+      "item.paranoiamod.cachorro": "Caramel Dog Spawn Egg",
+      "item.paranoiamod.toucan": "Toucan Spawn Egg",
+      "item.paranoiamod.teinuagua": "Teinuagua Spawn Egg",
+      "entity.paranoiamod.cachorro": "Caramel Dog",
+      "fluid.hotwater": "Hotwater",
+      "item.worm.name": "Maggot",
+      "item.paranoiamod.nightfirepowder": "Night Powder",
+      "item.paranoiamod.nightfirearmorlegs": "Nightfire Leggings",
+      "item.paranoiamod.nightfirearmorbody": "Nightfire Chestplate",
+      "entity.paranoiamod.night_fire_bird": "Night Fire Bird",
+      "item.paranoiamod.worm": "Maggot",
+      "item.paranoiamod.nightfirearmorboots": "Nightfire Boots",
+      "item.nightfirearmorhelmet.name": "Nightfire Helmet",
+      "item.nightfirepowder.name": "Night Powder",
+      "item.paranoiamod.brazilianlogo": "Brazilianlogo",
+      "entity.paranoiamod.teinuagua": "Teinuagua",
+      "item.paranoiamod.night_fire_bird": "Night Fire Bird Spawn Egg",
+      "block.paranoiamod.lizard_ruby_ore": "RubyOre",
+      "entity.paranoiamod.green_toucan": "Green Toucan",
+      "item.paranoiamod.mysteriouslogo": "Mysteriouslogo",
+      "item.paranoiamod.armadilo": "Armadilo Spawn Egg",
+      "entity.paranoiamod.werewolf": "Werewolf",
+      "item.paranoiamod.green_toucan": "Green Toucan Spawn Egg",
+      "item.paranoiamod.hotwater_bucket": "Hotwater Bucket",
+      "item.paranoiamod.panteraonca": "Jaguar Spawn Egg",
+      "item.paranoiamod.nightfirearmor_chestplate": "Nightfire Chestplate",
+      "item.paranoiamod.nightfirearmor_boots": "Nightfire Boots",
+      "item.nightfirearmorboots.name": "Nightfire Boots",
+      "block.paranoiamod.plantacuradeira": "Aconitum Napellus",
+      "entity.paranoiamod.toucan": "Toucan",
+      "entity.fogofatuo.name": "Fogo Fatuo",
+      "block.paranoiamod.lizard_ruby_ore_block": "Block of Ruby",
+      "item.nightfirearmorlegs.name": "Nightfire Leggings",
+      "item.pinhao.name": "Pinhao"
+    }
+  },
+  "workspaceSettings": {
+    "modid": "paranoiamod",
+    "modName": "Paranoia",
+    "version": "1.0.0",
+    "author": "Jean, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.15.2",
+    "modElementsPackage": "net.mcreator.paranoiamod",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202000432115
+}

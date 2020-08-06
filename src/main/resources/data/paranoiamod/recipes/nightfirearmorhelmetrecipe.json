@@ -1,0 +1,29 @@
+{
+  "group": "paranoiamod",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "3 5"
+  ],
+  "key": {
+    "0": {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    "1": {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    "2": {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    "3": {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    "5": {
+      "item": "paranoiamod:nightfirepowder"
+    }
+  },
+  "result": {
+    "item": "paranoiamod:nightfirearmor_helmet",
+    "count": 1
+  }
+}

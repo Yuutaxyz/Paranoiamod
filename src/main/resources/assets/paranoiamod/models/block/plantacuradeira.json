@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "paranoiamod:blocks/conitum_napellus",
+    "particle": "paranoiamod:blocks/conitum_napellus"
+  }
+}

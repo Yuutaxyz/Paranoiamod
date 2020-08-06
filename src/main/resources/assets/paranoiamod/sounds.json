@@ -52,5 +52,14 @@
         "stream": false
       }
     ]
+  },
+  "sirensound": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "paranoiamod:siren_sound",
+        "stream": false
+      }
+    ]
   }
 }

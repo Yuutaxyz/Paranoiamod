@@ -253,6 +253,15 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "night_fire_armor_boots_recipe_2"
+    },
+    {
+      "name": "YIara",
+      "type": "mob",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "y_iara"
     }
   ],
   "variable_elements": [],
@@ -286,6 +295,11 @@
       "name": "lobisomemsound",
       "file": "werewolf_howl-soundbible.com-1888553688",
       "category": "master"
+    },
+    {
+      "name": "sirensound",
+      "file": "siren_sound",
+      "category": "hostile"
     }
   ],
   "language_map": {
@@ -296,10 +310,12 @@
       "entity.paranoiamod.panteraonca": "Jaguar",
       "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
+      "item.paranoiamod.y_iara": "Y-Îara Spawn Egg",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.paranoiamod.lizard_ruby_gem": "Ruby",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
+      "entity.paranoiamod.y_iara": "Y-Îara",
       "item.paranoiamod.cachorro": "Caramel Dog Spawn Egg",
       "item.paranoiamod.toucan": "Toucan Spawn Egg",
       "item.paranoiamod.teinuagua": "Teinuagua Spawn Egg",
@@ -342,10 +358,12 @@
       "entity.paranoiamod.panteraonca": "Jaguar",
       "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
+      "item.paranoiamod.y_iara": "Y-Îara Spawn Egg",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.paranoiamod.lizard_ruby_gem": "Ruby",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
+      "entity.paranoiamod.y_iara": "Y-Îara",
       "item.paranoiamod.cachorro": "Caramel Dog Spawn Egg",
       "item.paranoiamod.toucan": "Toucan Spawn Egg",
       "item.paranoiamod.teinuagua": "Teinuagua Spawn Egg",

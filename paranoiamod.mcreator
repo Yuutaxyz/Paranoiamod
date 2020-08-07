@@ -262,6 +262,15 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "y_iara"
+    },
+    {
+      "name": "Cemiteriomenor",
+      "type": "structure",
+      "sortid": 31,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "cemiteriomenor"
     }
   ],
   "variable_elements": [],

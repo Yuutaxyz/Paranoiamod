@@ -1,0 +1,102 @@
+{
+  "_fv": 10,
+  "_type": "structure",
+  "definition": {
+    "structure": "cemiterio",
+    "randomlyRotateStructure": true,
+    "surfaceDetectionType": "First motion blocking block",
+    "spawnProbability": 8688,
+    "minCountPerChunk": 1,
+    "maxCountPerChunk": 1,
+    "spawnLocation": "Ground",
+    "spawnHeightOffset": 0,
+    "spawnWorldTypes": [
+      "Surface"
+    ],
+    "restrictionBlocks": [],
+    "restrictionBiomes": [
+      {
+        "value": "ocean"
+      },
+      {
+        "value": "swamp"
+      },
+      {
+        "value": "river"
+      },
+      {
+        "value": "nether"
+      },
+      {
+        "value": "the_end"
+      },
+      {
+        "value": "frozen_ocean"
+      },
+      {
+        "value": "frozen_river"
+      },
+      {
+        "value": "snowy_tundra"
+      },
+      {
+        "value": "snowy_mountains"
+      },
+      {
+        "value": "mushroom_fields"
+      },
+      {
+        "value": "frozen_ocean"
+      },
+      {
+        "value": "bamboo_jungle"
+      },
+      {
+        "value": "bamboo_jungle_hills"
+      },
+      {
+        "value": "desert"
+      },
+      {
+        "value": "smaller_extreme_hills"
+      },
+      {
+        "value": "beaches"
+      },
+      {
+        "value": "jungle_edge"
+      },
+      {
+        "value": "taiga_hills"
+      },
+      {
+        "value": "redwood_taiga_hills"
+      },
+      {
+        "value": "stone_beach"
+      },
+      {
+        "value": "birch_forest"
+      },
+      {
+        "value": "savanna"
+      },
+      {
+        "value": "badlands"
+      },
+      {
+        "value": "bamboo_jungle_hills"
+      },
+      {
+        "value": "mutated_mesa_clear_rock"
+      },
+      {
+        "value": "mutated_mesa_clear_rock"
+      },
+      {
+        "value": "beaches"
+      }
+    ],
+    "ignoreBlocks": "STRUCTURE_BLOCK"
+  }
+}

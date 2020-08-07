@@ -1,0 +1,19 @@
+{
+  "group": "paranoiamod",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    {
+      "item": "paranoiamod:nightfirepowder"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "item": "paranoiamod:nightfiresword",
+    "count": 1
+  }
+}

@@ -130,7 +130,7 @@ public class ToucanEntity extends ParanoiamodModElements.ModElement {
 
 		@Override
 		public CreatureAttribute getCreatureAttribute() {
-			return CreatureAttribute.ARTHROPOD;
+			return CreatureAttribute.UNDEFINED;
 		}
 
 		protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {

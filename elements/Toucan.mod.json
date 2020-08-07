@@ -45,7 +45,7 @@
       "value": ""
     },
     "mobBehaviourType": "Creature",
-    "mobCreatureType": "ARTHROPOD",
+    "mobCreatureType": "UNDEFINED",
     "attackStrength": 3,
     "movementSpeed": 0.5,
     "armorBaseValue": 0.0,

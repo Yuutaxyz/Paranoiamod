@@ -16,6 +16,7 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.World;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.DamageSource;
 import net.minecraft.network.IPacket;
 import net.minecraft.item.SpawnEggItem;
@@ -23,7 +24,8 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
-import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
@@ -35,6 +37,7 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.entity.AgeableEntity;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -56,7 +59,7 @@ public class ArmadiloEntity extends ParanoiamodModElements.ModElement {
 	@Override
 	public void initElements() {
 		entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-				.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.6f, 1.8f)).build("armadilo")
+				.setTrackingRange(63).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.6f, 1.8f)).build("armadilo")
 						.setRegistryName("armadilo");
 		elements.entities.add(() -> entity);
 		elements.items
@@ -94,7 +97,7 @@ public class ArmadiloEntity extends ParanoiamodModElements.ModElement {
 			};
 		});
 	}
-	public static class CustomEntity extends OcelotEntity {
+	public static class CustomEntity extends TameableEntity {
 		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
 			this(entity, world);
 		}
@@ -122,7 +125,7 @@ public class ArmadiloEntity extends ParanoiamodModElements.ModElement {
 
 		@Override
 		public CreatureAttribute getCreatureAttribute() {
-			return CreatureAttribute.UNDEAD;
+			return CreatureAttribute.UNDEFINED;
 		}
 
 		protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
@@ -148,17 +151,78 @@ public class ArmadiloEntity extends ParanoiamodModElements.ModElement {
 		}
 
 		@Override
+		public boolean processInteract(PlayerEntity sourceentity, Hand hand) {
+			ItemStack itemstack = sourceentity.getHeldItem(hand);
+			boolean retval = true;
+			Item item = itemstack.getItem();
+			if (itemstack.getItem() instanceof SpawnEggItem) {
+				retval = super.processInteract(sourceentity, hand);
+			} else if (this.world.isRemote) {
+				retval = this.isTamed() && this.isOwner(sourceentity) || this.isBreedingItem(itemstack);
+			} else {
+				if (this.isTamed()) {
+					if (this.isOwner(sourceentity)) {
+						if (item.isFood() && this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal((float) item.getFood().getHealing());
+							retval = true;
+						} else if (this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal(4);
+							retval = true;
+						} else {
+							retval = super.processInteract(sourceentity, hand);
+						}
+					}
+				} else if (this.isBreedingItem(itemstack)) {
+					this.consumeItemFromStack(sourceentity, itemstack);
+					if (this.rand.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, sourceentity)) {
+						this.setTamedBy(sourceentity);
+						this.world.setEntityState(this, (byte) 7);
+					} else {
+						this.world.setEntityState(this, (byte) 6);
+					}
+					this.enablePersistence();
+					retval = true;
+				} else {
+					retval = super.processInteract(sourceentity, hand);
+					if (retval)
+						this.enablePersistence();
+				}
+			}
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
+			Entity entity = this;
+			return retval;
+		}
+
+		@Override
 		protected void registerAttributes() {
 			super.registerAttributes();
 			if (this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) != null)
-				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4);
+				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
 			if (this.getAttribute(SharedMonsterAttributes.MAX_HEALTH) != null)
 				this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
 			if (this.getAttribute(SharedMonsterAttributes.ARMOR) != null)
-				this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0);
+				this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0.7999999999999999);
 			if (this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE) == null)
 				this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-			this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10);
+			this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6);
+		}
+
+		@Override
+		public AgeableEntity createChild(AgeableEntity ageable) {
+			return (CustomEntity) entity.create(this.world);
+		}
+
+		@Override
+		public boolean isBreedingItem(ItemStack stack) {
+			if (stack == null)
+				return false;
+			if (new ItemStack(Items.ROTTEN_FLESH, (int) (1)).getItem() == stack.getItem())
+				return true;
+			return false;
 		}
 	}
 

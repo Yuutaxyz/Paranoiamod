@@ -17,6 +17,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.DamageSource;
 import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.network.IPacket;
@@ -25,14 +26,17 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
-import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.entity.ai.controller.FlyingMovementController;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityClassification;
@@ -42,7 +46,6 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockState;
 
 import net.mcreator.paranoiamod.item.WormItem;
@@ -61,7 +64,7 @@ public class GreenToucanEntity extends ParanoiamodModElements.ModElement {
 
 	@Override
 	public void initElements() {
-		entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
+		entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.AMBIENT).setShouldReceiveVelocityUpdates(true)
 				.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.6f, 1.8f)).build("green_toucan")
 						.setRegistryName("green_toucan");
 		elements.entities.add(() -> entity);
@@ -79,11 +82,10 @@ public class GreenToucanEntity extends ParanoiamodModElements.ModElement {
 				biomeCriteria = true;
 			if (!biomeCriteria)
 				continue;
-			biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
+			biome.getSpawns(EntityClassification.AMBIENT).add(new Biome.SpawnListEntry(entity, 5, 4, 4));
 		}
-		EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos,
-						random) -> (world.getBlockState(pos.down()).getMaterial() == Material.ORGANIC && world.getLightSubtracted(pos, 0) > 8));
+		EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS,
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canSpawnOn);
 	}
 
 	@SubscribeEvent
@@ -98,7 +100,7 @@ public class GreenToucanEntity extends ParanoiamodModElements.ModElement {
 			};
 		});
 	}
-	public static class CustomEntity extends AnimalEntity {
+	public static class CustomEntity extends TameableEntity {
 		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
 			this(entity, world);
 		}
@@ -120,10 +122,11 @@ public class GreenToucanEntity extends ParanoiamodModElements.ModElement {
 		protected void registerGoals() {
 			super.registerGoals();
 			this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false));
-			this.goalSelector.addGoal(2, new RandomWalkingGoal(this, 1));
-			this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-			this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
-			this.goalSelector.addGoal(5, new SwimGoal(this));
+			this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 2, (float) 10, (float) 2, false));
+			this.goalSelector.addGoal(3, new RandomWalkingGoal(this, 1));
+			this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
+			this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
+			this.goalSelector.addGoal(6, new SwimGoal(this));
 		}
 
 		@Override
@@ -149,6 +152,53 @@ public class GreenToucanEntity extends ParanoiamodModElements.ModElement {
 		@Override
 		public boolean onLivingFall(float l, float d) {
 			return false;
+		}
+
+		@Override
+		public boolean processInteract(PlayerEntity sourceentity, Hand hand) {
+			ItemStack itemstack = sourceentity.getHeldItem(hand);
+			boolean retval = true;
+			Item item = itemstack.getItem();
+			if (itemstack.getItem() instanceof SpawnEggItem) {
+				retval = super.processInteract(sourceentity, hand);
+			} else if (this.world.isRemote) {
+				retval = this.isTamed() && this.isOwner(sourceentity) || this.isBreedingItem(itemstack);
+			} else {
+				if (this.isTamed()) {
+					if (this.isOwner(sourceentity)) {
+						if (item.isFood() && this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal((float) item.getFood().getHealing());
+							retval = true;
+						} else if (this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal(4);
+							retval = true;
+						} else {
+							retval = super.processInteract(sourceentity, hand);
+						}
+					}
+				} else if (this.isBreedingItem(itemstack)) {
+					this.consumeItemFromStack(sourceentity, itemstack);
+					if (this.rand.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, sourceentity)) {
+						this.setTamedBy(sourceentity);
+						this.world.setEntityState(this, (byte) 7);
+					} else {
+						this.world.setEntityState(this, (byte) 6);
+					}
+					this.enablePersistence();
+					retval = true;
+				} else {
+					retval = super.processInteract(sourceentity, hand);
+					if (retval)
+						this.enablePersistence();
+				}
+			}
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
+			Entity entity = this;
+			return retval;
 		}
 
 		@Override

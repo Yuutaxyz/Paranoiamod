@@ -16,6 +16,7 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.World;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.DamageSource;
 import net.minecraft.network.IPacket;
 import net.minecraft.item.SpawnEggItem;
@@ -23,12 +24,15 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
-import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
+import net.minecraft.entity.ai.goal.OwnerHurtTargetGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -72,7 +76,7 @@ public class CachorroEntity extends ParanoiamodModElements.ModElement {
 				biomeCriteria = true;
 			if (!biomeCriteria)
 				continue;
-			biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 7, 11, 11));
+			biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 11, 3, 3));
 		}
 		EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
 				(entityType, world, reason, pos,
@@ -91,7 +95,7 @@ public class CachorroEntity extends ParanoiamodModElements.ModElement {
 			};
 		});
 	}
-	public static class CustomEntity extends AnimalEntity {
+	public static class CustomEntity extends TameableEntity {
 		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
 			this(entity, world);
 		}
@@ -115,6 +119,8 @@ public class CachorroEntity extends ParanoiamodModElements.ModElement {
 			this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
 			this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
 			this.goalSelector.addGoal(5, new SwimGoal(this));
+			this.goalSelector.addGoal(6, new OwnerHurtTargetGoal(this));
+			this.goalSelector.addGoal(7, new FollowOwnerGoal(this, 2, (float) 10, (float) 2, false));
 		}
 
 		@Override
@@ -149,10 +155,57 @@ public class CachorroEntity extends ParanoiamodModElements.ModElement {
 		}
 
 		@Override
+		public boolean processInteract(PlayerEntity sourceentity, Hand hand) {
+			ItemStack itemstack = sourceentity.getHeldItem(hand);
+			boolean retval = true;
+			Item item = itemstack.getItem();
+			if (itemstack.getItem() instanceof SpawnEggItem) {
+				retval = super.processInteract(sourceentity, hand);
+			} else if (this.world.isRemote) {
+				retval = this.isTamed() && this.isOwner(sourceentity) || this.isBreedingItem(itemstack);
+			} else {
+				if (this.isTamed()) {
+					if (this.isOwner(sourceentity)) {
+						if (item.isFood() && this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal((float) item.getFood().getHealing());
+							retval = true;
+						} else if (this.isBreedingItem(itemstack) && this.getHealth() < this.getMaxHealth()) {
+							this.consumeItemFromStack(sourceentity, itemstack);
+							this.heal(4);
+							retval = true;
+						} else {
+							retval = super.processInteract(sourceentity, hand);
+						}
+					}
+				} else if (this.isBreedingItem(itemstack)) {
+					this.consumeItemFromStack(sourceentity, itemstack);
+					if (this.rand.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, sourceentity)) {
+						this.setTamedBy(sourceentity);
+						this.world.setEntityState(this, (byte) 7);
+					} else {
+						this.world.setEntityState(this, (byte) 6);
+					}
+					this.enablePersistence();
+					retval = true;
+				} else {
+					retval = super.processInteract(sourceentity, hand);
+					if (retval)
+						this.enablePersistence();
+				}
+			}
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
+			Entity entity = this;
+			return retval;
+		}
+
+		@Override
 		protected void registerAttributes() {
 			super.registerAttributes();
 			if (this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) != null)
-				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.7999999999999999);
+				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2);
 			if (this.getAttribute(SharedMonsterAttributes.MAX_HEALTH) != null)
 				this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
 			if (this.getAttribute(SharedMonsterAttributes.ARMOR) != null)

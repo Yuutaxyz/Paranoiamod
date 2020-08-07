@@ -28,6 +28,7 @@ import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
+import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
@@ -72,7 +73,7 @@ public class YIaraEntity extends ParanoiamodModElements.ModElement {
 				biomeCriteria = true;
 			if (!biomeCriteria)
 				continue;
-			biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(entity, 15, 1, 1));
+			biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(entity, 12, 1, 1));
 		}
 		EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
 				MonsterEntity::canMonsterSpawn);
@@ -115,6 +116,7 @@ public class YIaraEntity extends ParanoiamodModElements.ModElement {
 			this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
 			this.goalSelector.addGoal(5, new BreakDoorGoal(this, e -> true));
 			this.goalSelector.addGoal(6, new SwimGoal(this));
+			this.goalSelector.addGoal(7, new RandomSwimmingGoal(this, 5, 40));
 		}
 
 		@Override

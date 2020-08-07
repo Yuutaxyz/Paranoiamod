@@ -1,0 +1,33 @@
+{
+  "_fv": 10,
+  "_type": "structure",
+  "definition": {
+    "structure": "cemitery",
+    "randomlyRotateStructure": false,
+    "surfaceDetectionType": "First motion blocking block",
+    "spawnProbability": 12000,
+    "minCountPerChunk": 1,
+    "maxCountPerChunk": 1,
+    "spawnLocation": "Ground",
+    "spawnHeightOffset": 0,
+    "spawnWorldTypes": [
+      "Surface"
+    ],
+    "restrictionBlocks": [],
+    "restrictionBiomes": [
+      {
+        "value": "plains"
+      },
+      {
+        "value": "desert"
+      },
+      {
+        "value": "savanna"
+      },
+      {
+        "value": "savanna_rock"
+      }
+    ],
+    "ignoreBlocks": "STRUCTURE_BLOCK"
+  }
+}

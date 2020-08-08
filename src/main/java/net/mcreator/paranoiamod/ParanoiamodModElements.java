@@ -60,6 +60,7 @@ public class ParanoiamodModElements {
 				new net.minecraft.util.SoundEvent(new ResourceLocation("paranoiamod", "lobisomemsound")));
 		sounds.put(new ResourceLocation("paranoiamod", "sirensound"),
 				new net.minecraft.util.SoundEvent(new ResourceLocation("paranoiamod", "sirensound")));
+		sounds.put(new ResourceLocation("paranoiamod", "etsom"), new net.minecraft.util.SoundEvent(new ResourceLocation("paranoiamod", "etsom")));
 		try {
 			ModFileScanData modFileInfo = ModList.get().getModFileById("paranoiamod").getFile().getScanResult();
 			Set<ModFileScanData.AnnotationData> annotations = modFileInfo.getAnnotations();

@@ -61,5 +61,14 @@
         "stream": false
       }
     ]
+  },
+  "etsom": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "paranoiamod:som_do_et",
+        "stream": false
+      }
+    ]
   }
 }

@@ -298,6 +298,15 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "alpha_werewolf"
+    },
+    {
+      "name": "WartyAlien",
+      "type": "mob",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "warty_alien"
     }
   ],
   "variable_elements": [],
@@ -336,13 +345,19 @@
       "name": "sirensound",
       "file": "siren_sound",
       "category": "hostile"
+    },
+    {
+      "name": "etsom",
+      "file": "som_do_et",
+      "category": "hostile"
     }
   ],
   "language_map": {
     "en_us": {
+      "item.paranoiamod.warty_alien": "Warty Alien Spawn Egg",
       "item.paranoiamod.nightfirearmor_leggings": "Nightfire Leggings",
-      "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
       "entity.paranoiamod.armadilo": "Armadilo",
+      "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
@@ -359,8 +374,8 @@
       "item.paranoiamod.green_toucan": "Green Toucan Spawn Egg",
       "item.paranoiamod.hotwater_bucket": "Hotwater Bucket",
       "item.paranoiamod.panteraonca": "Jaguar Spawn Egg",
-      "item.nightfirearmorboots.name": "Nightfire Boots",
       "entity.paranoiamod.toucan": "Toucan",
+      "item.nightfirearmorboots.name": "Nightfire Boots",
       "block.paranoiamod.lizard_ruby_ore_block": "Block of Ruby",
       "item.paranoiamod.nightfirearmorhelmet": "Nightfire Helmet",
       "tile.plantacuradeira.name": "Aconitum Napellus",
@@ -379,6 +394,7 @@
       "item.paranoiamod.brazilianlogo": "Brazilianlogo",
       "entity.paranoiamod.teinuagua": "Teinuagua",
       "item.paranoiamod.night_fire_bird": "Night Fire Bird Spawn Egg",
+      "entity.paranoiamod.warty_alien": "Warty Alien",
       "entity.paranoiamod.green_toucan": "Green Toucan",
       "item.paranoiamod.mysteriouslogo": "Mysteriouslogo",
       "item.paranoiamod.armadilo": "Armadilo Spawn Egg",
@@ -391,9 +407,10 @@
       "item.pinhao.name": "Pinhao"
     },
     "pt_br": {
+      "item.paranoiamod.warty_alien": "Warty Alien Spawn Egg",
       "item.paranoiamod.nightfirearmor_leggings": "Nightfire Leggings",
-      "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
       "entity.paranoiamod.armadilo": "Armadilo",
+      "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
@@ -410,8 +427,8 @@
       "item.paranoiamod.green_toucan": "Green Toucan Spawn Egg",
       "item.paranoiamod.hotwater_bucket": "Hotwater Bucket",
       "item.paranoiamod.panteraonca": "Jaguar Spawn Egg",
-      "item.nightfirearmorboots.name": "Nightfire Boots",
       "entity.paranoiamod.toucan": "Toucan",
+      "item.nightfirearmorboots.name": "Nightfire Boots",
       "block.paranoiamod.lizard_ruby_ore_block": "Block of Ruby",
       "item.paranoiamod.nightfirearmorhelmet": "Nightfire Helmet",
       "tile.plantacuradeira.name": "Aconitum Napellus",
@@ -430,6 +447,7 @@
       "item.paranoiamod.brazilianlogo": "Brazilianlogo",
       "entity.paranoiamod.teinuagua": "Teinuagua",
       "item.paranoiamod.night_fire_bird": "Night Fire Bird Spawn Egg",
+      "entity.paranoiamod.warty_alien": "Warty Alien",
       "entity.paranoiamod.green_toucan": "Green Toucan",
       "item.paranoiamod.mysteriouslogo": "Mysteriouslogo",
       "item.paranoiamod.armadilo": "Armadilo Spawn Egg",

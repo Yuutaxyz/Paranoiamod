@@ -316,6 +316,15 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "alien_meat"
+    },
+    {
+      "name": "Fontetermal",
+      "type": "structure",
+      "sortid": 37,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "fontetermal"
     }
   ],
   "variable_elements": [],
@@ -365,8 +374,8 @@
     "en_us": {
       "item.paranoiamod.warty_alien": "Warty Alien Spawn Egg",
       "item.paranoiamod.nightfirearmor_leggings": "Nightfire Leggings",
-      "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
+      "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
@@ -384,8 +393,8 @@
       "item.paranoiamod.green_toucan": "Green Toucan Spawn Egg",
       "item.paranoiamod.hotwater_bucket": "Hotwater Bucket",
       "item.paranoiamod.panteraonca": "Jaguar Spawn Egg",
-      "entity.paranoiamod.toucan": "Toucan",
       "item.nightfirearmorboots.name": "Nightfire Boots",
+      "entity.paranoiamod.toucan": "Toucan",
       "block.paranoiamod.lizard_ruby_ore_block": "Block of Ruby",
       "item.paranoiamod.nightfirearmorhelmet": "Nightfire Helmet",
       "tile.plantacuradeira.name": "Aconitum Napellus",
@@ -419,8 +428,8 @@
     "pt_br": {
       "item.paranoiamod.warty_alien": "Warty Alien Spawn Egg",
       "item.paranoiamod.nightfirearmor_leggings": "Nightfire Leggings",
-      "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.werewolf": "Werewolf Spawn Egg",
+      "entity.paranoiamod.armadilo": "Armadilo",
       "item.paranoiamod.nightfirearmor_helmet": "Nightfire Helmet",
       "item.nightfirearmorbody.name": "Nightfire Chestplate",
       "itemGroup.tabmobsparanoia": "Brazilian Paranoia",
@@ -438,8 +447,8 @@
       "item.paranoiamod.green_toucan": "Green Toucan Spawn Egg",
       "item.paranoiamod.hotwater_bucket": "Hotwater Bucket",
       "item.paranoiamod.panteraonca": "Jaguar Spawn Egg",
-      "entity.paranoiamod.toucan": "Toucan",
       "item.nightfirearmorboots.name": "Nightfire Boots",
+      "entity.paranoiamod.toucan": "Toucan",
       "block.paranoiamod.lizard_ruby_ore_block": "Block of Ruby",
       "item.paranoiamod.nightfirearmorhelmet": "Nightfire Helmet",
       "tile.plantacuradeira.name": "Aconitum Napellus",

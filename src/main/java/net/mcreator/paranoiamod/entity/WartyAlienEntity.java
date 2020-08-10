@@ -17,7 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.DamageSource;
 import net.minecraft.network.IPacket;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
@@ -40,6 +39,7 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.block.BlockState;
 
+import net.mcreator.paranoiamod.item.AlienMeatItem;
 import net.mcreator.paranoiamod.ParanoiamodModElements;
 
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -112,7 +112,7 @@ public class WartyAlienEntity extends ParanoiamodModElements.ModElement {
 
 		protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
 			super.dropSpecialItems(source, looting, recentlyHitIn);
-			this.entityDropItem(new ItemStack(Items.ENDER_PEARL, (int) (1)));
+			this.entityDropItem(new ItemStack(AlienMeatItem.block, (int) (1)));
 		}
 
 		@Override

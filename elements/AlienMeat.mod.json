@@ -1,0 +1,22 @@
+{
+  "_fv": 10,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "alienmeat",
+    "customModelName": "Normal",
+    "name": "Alien Meat",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:MobsParanoia"
+    },
+    "stackSize": 64,
+    "nutritionalValue": 10,
+    "saturation": 0.6,
+    "eatingSpeed": 32,
+    "forDogs": true,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}
